@@ -1,5 +1,4 @@
-# IDS706 Final Project
-# MOVIE REVIEW APPLICATION with SENTIMENT ANALYSIS 
+# IDS706 Final Project: MOVIE REVIEW SENTIMENT ANALYSIS USING AWS
 ## Team: Kashaf Ali, Lorna Maria Aine, Pragya Raghuvanshi, and Aadila Jasmin
 
 [![Python application test with Github Actions](https://github.com/nogibjj/IDS706_Final_Project_klap/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/IDS706_Final_Project_klap/actions/workflows/main.yml) [![AWS CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieDE0Qkc1R1NqdEowaERYeXhmbThIVHZOeXJWLzFpTCtDZXUrU1dZMTJDNjFMaUZwMjhtMjhFeHg0Rnl1Q3VEWkU0ZzVHL3hLQXpmdzloTldxcFFPd3RZPSIsIml2UGFyYW1ldGVyU3BlYyI6IklQS1VGMVdHaVZrN3FwdWoiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
@@ -8,13 +7,11 @@ In this project, we used two Hugging Face datasets related to movie reviews to c
 
 ![image](https://user-images.githubusercontent.com/67281453/208021407-1e37af79-cb6a-4fae-9564-744e256178e1.png)
 
-## METHODOLOGY
-
+## Methodology:
 1) Extraction of the Data from Hugging Face, Transformation and Loading to be used in codespace.
 2) Pulling in the package that we created from https://github.com/lornamariak/reviews
 3) Using FASTAPI to create an application that returns a JSON Payload to the User
 4) The end-points are linked to AWS Lambda to perform sentiment analysis.
-
 
 ## HuggingFace Dataset ETL (Extraction, Transformation, Loading):
 1. Build a search tool for looking for datasets
@@ -31,7 +28,7 @@ In this project, we used two Hugging Face datasets related to movie reviews to c
 3. published to PyPI
 4. used it generate records in the next step.
 
-## NEXT STEPS - EDA & FASTAPI
+## Next Steps: EDA & FASTAPI:
 1. Performed basic EDA on the merged dataset - EDA.py
 2. Created data_generator.py function that returns only 1000 rows of the dataset (Can be used for AWS )
 3. Created a FastAPI application - Uvicorn (Linked to the movie reviews dataset) with 6 endpoints: \
@@ -40,8 +37,7 @@ In this project, we used two Hugging Face datasets related to movie reviews to c
     III. Returns a Random Negatively or Positively (0 or 1) labelled data row - /random/{0} or /random/{1}\
     IV. Returns a review containing a particular word  - /find/{word}
   
-  
-## Sentiment Analysis using AWS S3, Lambda and Comprehend
+## Sentiment Analysis using AWS S3, Lambda and Comprehend:
 1. Reviews pulled from the Python package are stored in a text file in the S3 bucket.
 2. IAM Role is created for appropriate permissions for Comprehend and AWS Lamda.
 3. Amazon comprehend is a natural language processing (NLP) service that uses machine learning technique. It can analyze the text and sentiment of the document.
@@ -49,15 +45,12 @@ In this project, we used two Hugging Face datasets related to movie reviews to c
 5. In the code Boto3 is being used to call the Comprehend API which performs sentimental analysis.
 6. The code is deployed and tested for results. 
 
-
-
-## FastAPI Connection to AWS
+## FastAPI Connection to AWS:
 Using FastAPI to draw reviews from Python package and connect to AWS to perform sentimental analysis. 
 1. An endpoint, /movie_reviews/{source}/{size}, that pulls response reviews based on the source and number as specified by Client. This is also used to     upload the file to the S3 bucket and perform analysis using Amazon Comprehend. 
-    
 2. Sentiment analysis performed using FastAPI endpoint, /tests/{r}, is created for a function that receives the user’s inputted list of text and runs     it through the AWS Lambda to perform analysis. for predicted classifications.
 
-## Continuous Integration & Continuous Delivery
+## Continuous Integration & Continuous Delivery:
 1. Continuous Integration: We have Github Actions to ensure with CI with every commit, and we also use a Makefile to manually check this.
 2. Continuous Delivery: We used an ECR Repository and CodeBuild to ensure CD (due to resource constraints we were not able to keep it live, but our build was successful).
 
